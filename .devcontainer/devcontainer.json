@@ -1,0 +1,15 @@
+{
+  "name": "Mermaid",
+  "build": { "dockerfile": "Dockerfile" },
+  "remoteUser": "node",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "zixuanchen.vitest-explorer",
+        "luniclynx.bison"
+      ]
+    }
+  }
+}

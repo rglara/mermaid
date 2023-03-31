@@ -10,13 +10,17 @@ Below link will help you making a copy of the repository in your local system.
 
 https://docs.github.com/en/get-started/quickstart/fork-a-repo
 
-## Requirements
+## Development Environment (bare metal)
+
+The following guidelines have been established when installing tools directly on your machine.
+
+### Requirements
 
 - [volta](https://volta.sh/) to manage node versions.
 - [Node.js](https://nodejs.org/en/). `volta install node`
 - [pnpm](https://pnpm.io/) package manager. `volta install pnpm`
 
-## Development Installation
+### Development Installation
 
 ```bash
 git clone git@github.com:mermaid-js/mermaid.git
@@ -25,6 +29,56 @@ cd mermaid
 npx pnpm install
 pnpm test
 ```
+
+## Development Environment (VSCode DevContainer)
+
+The following guidelines have been established to using Visual Studio Code's Dev Containers to isolate tooling from your machine.
+
+### Requirements
+
+See the Visual Studio Code Dev Containers [Getting Started](https://code.visualstudio.com/docs/devcontainers/containers#_getting-started) guide for details.
+
+- [Docker Desktop/Engine](https://docs.docker.com/get-docker/) for container management
+- [Visual Studio Code](https://code.visualstudio.com/Download) for the IDE
+- [Dev Containers VSCode extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) for dev container support within VSCode
+
+### Development Installation
+
+- Clone the repo and open in VSCode
+
+  ```bash
+  git clone git@github.com:mermaid-js/mermaid.git
+  cd mermaid
+  code .
+  ```
+
+- When opening the repository folder in VSCode, it will prompt you to "Reopen in Container"
+
+  - This will create the Docker container and link the directory into the running container under `/workspaces/mermaid`
+  - All commands should be done in the terminal within VSCode (not a shell/command prompt on your local machine), as the Dev Container will have the prerequisite development tooling, including `git` commit hooks
+
+- Install dependencies using `pnpm` within a terminal inside VSCode
+
+  ```bash
+  pnpm install
+  pnpm exec cypress install
+  ```
+
+- Double check tests run successfully
+
+  ```bash
+  pnpm test
+  ```
+
+- Double check Cypress launches and runs successfully
+
+  ```bash
+  # in one terminal
+  pnpm run dev
+
+  # in another terminal
+  pnpm run cypress:open
+  ```
 
 ## Committing code
 
