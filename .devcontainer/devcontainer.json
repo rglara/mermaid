@@ -1,0 +1,19 @@
+{
+  "name": "Mermaid",
+  "build": {
+    "context": "..",
+    "dockerfile": "../Dockerfile"
+  },
+  "containerUser": "node",
+  "forwardPorts": [3333, 9000],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "vitest.explorer",
+        "luniclynx.bison"
+      ]
+    }
+  }
+}
