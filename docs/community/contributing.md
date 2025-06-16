@@ -43,7 +43,7 @@ cd mermaid
 
 ### Install Requirements
 
-We support **development within Docker** environment along with **host setup**. You may choose it up to your preferences.
+We support developing on your **host machine**, within **Docker**, or using a **VSCode DevContainer**. You may choose according to your preferences.
 
 **Host**
 
@@ -73,6 +73,14 @@ echo $DISPLAY
 ```
 
 If the `$DISPLAY` variable is not empty, then an X11 server is running. Otherwise you may need to install one.
+
+**DevContainer**
+
+See the Visual Studio Code Dev Containers [Getting Started](https://code.visualstudio.com/docs/devcontainers/containers#_getting-started) guide for details.
+
+- [Docker Desktop/Engine](https://docs.docker.com/get-docker/) for container management
+- [Visual Studio Code](https://code.visualstudio.com/Download) for the IDE
+- [Dev Containers VSCode extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) for dev container support within VSCode
 
 ### Install Packages
 
@@ -105,13 +113,29 @@ Then install packages:
 ./run pnpm install
 ```
 
+**DevContainer**
+
+When opening the repository folder in VSCode, it will prompt you to "Reopen in Container".
+
+- This will create the Docker container and link the directory into the running container under `/workspaces/mermaid`
+- All commands should be done in the terminal within VSCode (not a shell/command prompt on your host machine), as the Dev Container will have the prerequisite development tooling, including `git` commit hooks
+
+Install dependencies using `pnpm` within a terminal inside VSCode:
+
+```bash
+pnpm install
+```
+
+> **Note**
+> From here forward, the **DevContainer** instructions should follow the same instructions as the **Host Machine**, using the terminal(s) within VSCode.
+
 ### Verify Everything Works
 
 This step is optional, but it helps to make sure that everything in development branch was OK before you started making any changes.
 
 You can run the `test` script to verify that pnpm is working _and_ that the repository has been cloned correctly:
 
-**Host**
+**Host | DevContainer**
 
 ```bash
 pnpm test
@@ -241,7 +265,7 @@ The core of Mermaid is located under `packages/mermaid/src`.
 
 ### Building Mermaid Locally
 
-**Host**
+**Host | DevContainer**
 
 ```bash
 pnpm run build
@@ -257,7 +281,7 @@ This will build the Mermaid library and the documentation site.
 
 ### Running Mermaid Locally
 
-**Host**
+**Host | DevContainer**
 
 ```bash
 pnpm run dev
@@ -305,7 +329,7 @@ Unit tests are mandatory for all code except the renderers. (The renderers are t
 
 We use [Vitest](https://vitest.dev) to run unit tests.
 
-**Host**
+**Host | DevContainer**
 
 You can use the following command to run the unit tests:
 
@@ -335,7 +359,7 @@ This ensures that the rendering of that feature in the E2E will be reviewed in t
 
 To start working with the E2E tests:
 
-**Host**
+**Host | DevContainer**
 
 - Run `pnpm dev` to start the dev server
 - Start **Cypress** by running `pnpm cypress:open`
@@ -433,7 +457,7 @@ flowchart LR
 
 Start development server for the documentation site
 
-**Host**
+**Host | DevContainer**
 
 ```bash
 pnpm --filter mermaid run docs:dev
