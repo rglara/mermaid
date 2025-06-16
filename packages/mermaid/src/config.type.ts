@@ -200,6 +200,7 @@ export interface MermaidConfig {
   packet?: PacketDiagramConfig;
   block?: BlockDiagramConfig;
   radar?: RadarDiagramConfig;
+  storyMap?: StoryMapDiagramConfig;
   dompurifyConfig?: DOMPurifyConfiguration;
   wrap?: boolean;
   fontSize?: number;
@@ -1609,6 +1610,13 @@ export interface RadarDiagramConfig extends BaseDiagramConfig {
    */
   curveTension?: number;
 }
+/**
+ * The object containing configurations specific for story map diagrams.
+ *
+ * This interface was referenced by `MermaidConfig`'s JSON-Schema
+ * via the `definition` "StoryMapDiagramConfig".
+ */
+export interface StoryMapDiagramConfig extends BaseDiagramConfig {}
 /**
  * This interface was referenced by `MermaidConfig`'s JSON-Schema
  * via the `definition` "FontConfig".
