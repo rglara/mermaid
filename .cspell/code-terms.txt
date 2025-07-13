@@ -111,6 +111,7 @@ starty
 STMNT
 stopx
 stopy
+storymap
 strikethrough
 stringifying
 struct
